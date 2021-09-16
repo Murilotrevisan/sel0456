@@ -55,6 +55,10 @@
 
 - Processos: criando processos com `fork` e `exec`
 - Usando `man <fcn>` para obter documentação sobre função `<fcn>`
+- Uso de semaforo (semaphore.h)
+	1. `sem_init()`
+	2. `sem_wait()`
+	3. `sem_post()`
 
 # Aula 6 (09/09)
 
@@ -65,3 +69,45 @@ Assuntos da aula:
 - popen
 - pipe
 - malloc
+
+# Aula 7
+
+Assuntos da aula 7:
+
+- gdb
+- lib electric-fence (-lefence)
+- aasert
+- esp32: esp-idf:
+
+```
+$ cd ~
+$ mkdir esp
+$ cd esp
+$ git clone -b v4.3 --recursive https://github.com/espressif/esp-idf.git
+$ cd esp-idf
+$ ./install.sh
+```
+
+O processo de instalação está finalizado nesse ponto.
+
+Pode-se copiar um exemplo, dos vários disponíveis e rodar:
+
+```
+$ cd ~
+$ mkdir Code
+$ cd Code
+$ cp -a ~/esp/esp-idf/examples/peripherals/ledc .
+$ cd ledc
+$ . ~/esp/esp-idf/export.sh
+```
+
+Para editar o exemplo:
+```
+$ emacs main/ledc_example_main.c
+```
+
+```
+$ idf.py menuconfig
+$ idf.py build
+$ idf.py -p /dev/ttyUSB0 flash monitor
+```
